@@ -3,12 +3,12 @@
 {application, gen_service,
  [
   {description, ""},
-  {vsn, "1"},
+  {vsn, "0.1.0"},
   {registered, []},
   {applications, [
-                  kernel,
-                  stdlib
-                 ]},
+      kernel,
+      stdlib
+    ]},
   {mod, { gen_service_app, []}},
   {env, []}
  ]}.
