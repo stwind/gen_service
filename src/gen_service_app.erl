@@ -21,5 +21,9 @@ stop(_State) ->
 %% ===================================================================
 
 services() ->
-    {ok, Services} = application:get_env(gen_service, services),
-    Services.
+    case application:get_env(gen_service, services) of
+        undefined ->
+            [];
+        {ok, Services} ->
+            Services
+    end.

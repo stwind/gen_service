@@ -12,5 +12,5 @@ exec $ERL -pa ebin \
     -setcookie $COOKIE \
     -config $CONFIG \
     -env ERL_LIBS $LIBS_DIR \
-    -s $APP \
+    -eval "application:start($APP)" \
     -s sync go
