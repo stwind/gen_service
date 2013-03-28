@@ -10,7 +10,16 @@
 %% ===================================================================
 
 start(_StartType, _StartArgs) ->
+    gen_service_conf:start(services()),
     gen_service_sup:start_link().
 
 stop(_State) ->
     ok.
+
+%% ===================================================================
+%% private
+%% ===================================================================
+
+services() ->
+    {ok, Services} = application:get_env(gen_service, services),
+    Services.
