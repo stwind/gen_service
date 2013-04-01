@@ -16,7 +16,8 @@ parse_conf(Config) ->
 call({Mod, Fun, Args}, Config) ->
     Node = conf(node, Config, node()),
     Timeout = conf(node, Config, ?TIMEOUT),
-    case rpc:call(Node, Mod, Fun, Args, Timeout) of
+    Mod1 = maybe_delegate(Mod, Config),
+    case rpc:call(Node, Mod1, Fun, Args, Timeout) of
         {badrpc, Reason} ->
             {error, Reason};
         Res ->
@@ -39,3 +40,6 @@ conf(Key, Config, Default) ->
         false ->
             Default
     end.
+
+maybe_delegate(Mod, Config) ->
+    conf(delegate, Config, Mod).
