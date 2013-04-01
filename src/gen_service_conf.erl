@@ -33,7 +33,7 @@ add_service(Name, Config) ->
 %% ===================================================================
 
 handler(Type) ->
-    list_to_atom("gen_service_" ++ atom_to_list(Type)).
+    list_to_atom("gs_client_" ++ atom_to_list(Type)).
 
 format() ->
     case application:get_env(gen_service, format) of

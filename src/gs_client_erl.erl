@@ -1,4 +1,4 @@
--module(gen_service_erl).
+-module(gs_client_erl).
 
 -export([call/2]).
 -export([cast/2]).
