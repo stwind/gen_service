@@ -21,7 +21,7 @@ call({Mod, Fun, Args}, Config) ->
         {badrpc, Reason} ->
             {error, Reason};
         Res ->
-            {ok, Res}
+            Res
     end.
 
 cast({Mod, Fun, Args}, Config) ->
