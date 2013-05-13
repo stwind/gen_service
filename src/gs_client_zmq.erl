@@ -14,12 +14,7 @@ parse_conf(Config) ->
     y:kf(pool, Config).
 
 call({Mod, Fun, Args}, Pool) ->
-    case zerpc:call(Pool, Mod, Fun, Args) of
-        {error, {server, _, _, Reason, _}} ->
-            {error, Reason};
-        Other ->
-            Other
-    end.
+    zerpc:call(Pool, Mod, Fun, Args).
 
 cast({Mod, Fun, Args}, Pool) ->
     zerpc:cast(Pool, Mod, Fun, Args).
