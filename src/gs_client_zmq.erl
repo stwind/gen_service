@@ -11,13 +11,13 @@
 %% ===================================================================
 
 parse_conf(Config) ->
-    Config.
+    y:kf(pool, Config).
 
-call({Mod, Fun, Args}, _Config) ->
-    zerpc:call(Mod, Fun, Args).
+call({Mod, Fun, Args}, Pool) ->
+    zerpc:call(Pool, Mod, Fun, Args).
 
-cast({Mod, Fun, Args}, _Config) ->
-    zerpc:cast(Mod, Fun, Args).
+cast({Mod, Fun, Args}, Pool) ->
+    zerpc:cast(Pool, Mod, Fun, Args).
 
 %% ===================================================================
 %% Private
