@@ -2,7 +2,7 @@
 
 -export([call/2]).
 -export([cast/2]).
--export([parse_conf/1]).
+-export([init/1]).
 
 -define(TIMEOUT, 5000).
 
@@ -10,7 +10,7 @@
 %% Public
 %% ===================================================================
 
-parse_conf(Config) ->
+init(Config) ->
     Config.
 
 call({Mod, Fun, Args}, Config) ->

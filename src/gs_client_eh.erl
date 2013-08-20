@@ -1,4 +1,4 @@
--module(gs_client_zmq).
+-module(gs_client_eh).
 
 -export([call/2]).
 -export([cast/2]).
@@ -11,15 +11,15 @@
 %% ===================================================================
 
 init(Config) ->
-    Pool = y:kf(pool, Config),
+    Service = y:kf(service, Config),
     Timeout = y:kf(timeout, Config, ?TIMEOUT),
-    {Pool, Timeout}.
+    {Service, Timeout}.
 
-call({Mod, Fun, Args}, {Pool, Timeout}) ->
-    zerpc:call(Pool, Mod, Fun, Args, Timeout).
+call({Mod, Fun, Args}, {Service, Timeout}) ->
+    ehrpc:call(Service, Mod, Fun, Args, Timeout).
 
-cast({Mod, Fun, Args}, {Pool, Timeout}) ->
-    zerpc:cast(Pool, Mod, Fun, Args, Timeout).
+cast({Mod, Fun, Args}, {Service, Timeout}) ->
+    ehrpc:cast(Service, Mod, Fun, Args, Timeout).
 
 %% ===================================================================
 %% Private

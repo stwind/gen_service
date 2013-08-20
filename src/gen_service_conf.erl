@@ -25,7 +25,7 @@ get_handler(Name) ->
 
 add_service(Name, Config) ->
     Handler = handler(proplists:get_value(type, Config)),
-    Config1 = Handler:parse_conf(Config),
+    Config1 = Handler:init(Config),
     ets:insert(?SERVICES, {Name, Handler, Config1}).
 
 %% ===================================================================
